@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave:
-    amplitude: 1
+    amplitude: 0.2
     wavelength: 2
     speed: 1
     phase: 0
@@ -522,7 +522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &801146070
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -623,11 +623,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave:
-    amplitude: 1
+    amplitude: 0.2
     wavelength: 6.71
     speed: 3.45
     phase: 0
-    direction: {x: 1, y: 0.2}
+    direction: {x: 1, y: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
