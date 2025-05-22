@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GerstNerWave : MonoBehaviour
+public class GerstNerWave : MonoBehaviour, IBuoyantWater
 {
     public Wave wave = new Wave();
     private Mesh mesh;
@@ -14,6 +14,20 @@ public class GerstNerWave : MonoBehaviour
         baseVertices = mesh.vertices;
         modifiedVertices = new Vector3[baseVertices.Length];
     }
+
+    public float GetWaterHeightAtPosition(Vector3 position)
+    {
+        float time = Time.time;
+        float k = wave.Frequency;
+        float a = wave.amplitude;
+        Vector2 dir = wave.direction.normalized;
+        float omega = wave.speed * k;
+
+        float dot = Vector2.Dot(new Vector2(position.x, position.z), dir);
+        float sin = Mathf.Sin(k * dot - omega * time + wave.phase);
+        return a * sin;
+    }
+
 
     void Update()
     {

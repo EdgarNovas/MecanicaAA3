@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SinusoidalWave : MonoBehaviour
+public class SinusoidalWave : MonoBehaviour, IBuoyantWater
 {
     public Wave wave = new Wave();
     private Mesh mesh;
@@ -13,6 +13,13 @@ public class SinusoidalWave : MonoBehaviour
         mesh = GetComponent<MeshFilter>().mesh;
         baseVertices = mesh.vertices;
         modifiedVertices = new Vector3[baseVertices.Length];
+    }
+
+    public float GetWaterHeightAtPosition(Vector3 position)
+    {
+        float time = Time.time;
+        float dot = Vector2.Dot(new Vector2(position.x, position.z), wave.direction.normalized);
+        return wave.amplitude * Mathf.Sin(wave.Frequency * (dot - wave.speed * time) + wave.phase);
     }
 
     void Update()
