@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterSurface: {fileID: 1722984138}
   floatStrength: 1
-  smoothTime: 0.2
+  smoothTime: 0.8
 --- !u!136 &1047058862
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -556,8 +556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722984134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -3.31, z: 0}
+  m_LocalScale: {x: 10.131, y: 10.131, z: 24.38025}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -572,11 +572,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1722984134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f5871e1407a994a82f7d864029b60f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9765960495a9db44fb25a5c984ec1063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wave:
-    amplitude: 1
+    amplitude: 5
     wavelength: 2
     speed: 1
     phase: 0
