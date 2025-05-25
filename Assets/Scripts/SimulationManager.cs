@@ -6,7 +6,8 @@ using UnityEngine;
 public class SimulationManager : MonoBehaviour
 {
     public bool isGerstnerWaveActive;
-    public GameObject water;
+    public GameObject gerstnerWater;
+    public GameObject sinusoidalWater;
     public TextMeshProUGUI text;
 
     void Start()
@@ -34,14 +35,15 @@ public class SimulationManager : MonoBehaviour
 
         if (isGerstnerWaveActive)
         {
-            water.GetComponent<GerstNerWave>().enabled = true;
-            water.GetComponent<SinusoidalWave>().enabled = false;
+            gerstnerWater.SetActive(true);
+            sinusoidalWater.SetActive(false);
+
             textString = "Simulating: Gerstner Wave";
         }
         else
         {
-            water.GetComponent<SinusoidalWave>().enabled = true;
-            water.GetComponent<GerstNerWave>().enabled = false;
+            sinusoidalWater.SetActive(true);
+            gerstnerWater.SetActive(false);
             textString = "Simulating: Sinusoidal Wave";
         }
 

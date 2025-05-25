@@ -17,15 +17,17 @@ public class GerstNerWave : MonoBehaviour, IBuoyantWater
 
     public float GetWaterHeightAtPosition(Vector3 position)
     {
+        Vector3 localPos = transform.InverseTransformPoint(position); // convertir a espacio local
+
         float time = Time.time;
         float k = wave.Frequency;
         float a = wave.amplitude;
         Vector2 dir = wave.direction.normalized;
         float omega = wave.speed * k;
 
-        float dot = Vector2.Dot(new Vector2(position.x, position.z), dir);
+        float dot = Vector2.Dot(new Vector2(localPos.x, localPos.z), dir);
         float sin = Mathf.Sin(k * dot - omega * time + wave.phase);
-        return a * sin;
+        return transform.position.y + a * sin;
     }
 
 

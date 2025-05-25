@@ -17,9 +17,17 @@ public class SinusoidalWave : MonoBehaviour, IBuoyantWater
 
     public float GetWaterHeightAtPosition(Vector3 position)
     {
+        Vector3 localPos = transform.InverseTransformPoint(position);
+
         float time = Time.time;
-        float dot = Vector2.Dot(new Vector2(position.x, position.z), wave.direction.normalized);
-        return wave.amplitude * Mathf.Sin(wave.Frequency * (dot - wave.speed * time) + wave.phase);
+        float k = wave.Frequency;
+        Vector2 dir = wave.direction.normalized;
+
+        float dot = Vector2.Dot(new Vector2(localPos.x, localPos.z), dir);
+        float y = wave.amplitude * Mathf.Sin(k * (dot - wave.speed * time) + wave.phase);
+
+        // Volver a coordenadas globales (el centro del plano puede estar más arriba o más abajo)
+        return transform.position.y + y;
     }
 
     void Update()
