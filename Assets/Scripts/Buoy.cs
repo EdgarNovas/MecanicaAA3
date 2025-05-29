@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// Este script simula el comportamiento de una boya que flota sobre una malla de agua deformada,
+// calculando la flotabilidad basada en el principio de Arquímedes sin necesidad de Rigidbody ni colisiones.
+
 public class Buoy : MonoBehaviour
 {
     public Transform gerstnerWaterSurface;   // Objeto con el componente Gerstner
@@ -22,6 +25,7 @@ public class Buoy : MonoBehaviour
 
     void Start()
     {
+        // Inicializamos las referencias a los componentes de agua que implementan la interfaz
         gerstnerWater = gerstnerWaterSurface.GetComponent<IBuoyantWater>();
         if (gerstnerWater == null)
         {
@@ -41,7 +45,7 @@ public class Buoy : MonoBehaviour
 
         float waterHeight = 0f;
 
-
+        // Elegimos la simulación de agua activa (Gerstner o Sinusoidal)
         if (gerstnerWaterSurface.gameObject.activeSelf)
         {
             if (gerstnerWater == null) return;
@@ -85,6 +89,7 @@ public class Buoy : MonoBehaviour
             pos.y += velocityY * Time.deltaTime;
         }
 
+        // Actualizamos la posición de la boya
         transform.position = pos;
     }
 }
